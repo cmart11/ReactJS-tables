@@ -5,16 +5,15 @@ module.exports = {
         path: __dirname, // assumes your bundle.js will also be in the root of your project folder
         filename: './public/bundle.js'
     },
-    devServer: {
-        historyApiFallback: true,
-        contentBase: './',
-        hot: true
-    },
     watchOptions: {
         ignored: /node_modules/
     },
     resolve: {
         extensions: ['.js', '.jsx']
+    },
+    devServer: {
+        contentBase: './public',
+        hot: true
     },
     devtool: 'source-maps',
     module: {
@@ -25,6 +24,13 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                ]
             }
         ]
     }
