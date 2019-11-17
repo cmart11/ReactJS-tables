@@ -1,16 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-export default function About(props) {
+import AppTable from './TestTable';
+
+export default function About() {
+    //console.log('props', props);
     return (
         <div>
-            <h1>
-                About
-                {
-                    props.data
-                        ? <h2>yes data</h2>
-                        : <h2>no data</h2>
-                }
-            </h1>
+            <h1>About</h1>
+            <AppTable />
         </div>
     );
 }
