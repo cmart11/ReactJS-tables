@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     return (
@@ -10,6 +11,9 @@ export default function Navbar() {
                 </li>
                 <li>
                     <Link to="/about">About</Link>
+                </li>
+                <li>
+                    <Link to="/account">Account History</Link>
                 </li>
             </ul>
         </nav>

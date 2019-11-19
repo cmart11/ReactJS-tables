@@ -6,7 +6,7 @@ import { Navbar } from './components'
 const App = () => {
     return (
         <div>
-            <h1>helllooooo</h1>
+            <h2>Ticket Scraper</h2>
             <Navbar />
             <Routes />
         </div>
