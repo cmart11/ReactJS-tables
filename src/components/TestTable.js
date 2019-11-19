@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTable } from 'react-table'
+import { useTable, useSortBy, usePagination } from 'react-table'
 
 import makeData from '../makeData'
 
@@ -45,7 +45,10 @@ function Table({ columns, data }) {
     } = useTable({
         columns,
         data,
-    })
+    },
+        useSortBy,
+        usePagination
+    )
 
     // Render the UI for your table
     return (
@@ -54,7 +57,12 @@ function Table({ columns, data }) {
                 {headerGroups.map(headerGroup => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map(column => (
-                            <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                            <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                                {column.render('Header')}
+                                <span>
+                                    {column.isSorted ? (column.isSortedDesc ? ':   v' : ':   ^') : ''}
+                                </span>
+                            </th>
                         ))}
                     </tr>
                 ))}
@@ -86,10 +94,12 @@ function AppTable() {
                     {
                         Header: 'First Name',
                         accessor: 'firstName',
+                        sortType: 'basic'
                     },
                     {
                         Header: 'Last Name',
                         accessor: 'lastName',
+                        sortType: 'basic'
                     },
                 ],
             },
@@ -99,18 +109,22 @@ function AppTable() {
                     {
                         Header: 'Age',
                         accessor: 'age',
+                        sortType: 'basic'
                     },
                     {
                         Header: 'Visits',
                         accessor: 'visits',
+                        sortType: 'basic'
                     },
                     {
                         Header: 'Status',
                         accessor: 'status',
+                        sortType: 'basic'
                     },
                     {
                         Header: 'Profile Progress',
                         accessor: 'progress',
+                        sortType: 'basic'
                     },
                 ],
             },
@@ -118,7 +132,7 @@ function AppTable() {
         []
     )
 
-    const data = React.useMemo(() => makeData(10), [])
+    const data = React.useMemo(() => makeData(30), [])
 
     return (
         <Styles>
