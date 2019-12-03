@@ -17,9 +17,9 @@ const newPerson = () => {
         visits: Math.floor(Math.random() * 100),
         progress: Math.floor(Math.random() * 100),
         status:
-            statusChance > 0.66
+            statusChance > 0.70
                 ? 'relationship'
-                : statusChance > 0.33
+                : statusChance > 0.35
                     ? 'complicated'
                     : 'single',
     }

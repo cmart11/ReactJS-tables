@@ -18,3 +18,7 @@ button {
     background-color: #fff;
     border: none;
 }
+
+li {
+    list-style: none;
+}
